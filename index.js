@@ -139,7 +139,8 @@ function doCheck(e){
         output.innerText = "Wow! Birthday is Palindrome";
        }else{
            var [count, nextDate] = getNextPalindromeDate(date);
-           output.innerText = `Oops! Not a Palindrome. The palindrome date is after ${count} days and the date is ${nextDate.day}-${nextDate.month}-${nextDate.year}`;
+           nextDate = dateToString(nextDate);
+           output.innerText = `Oops! Birthday is not a Palindrome. The palindrome date is after ${count} days and the date is ${nextDate.day}-${nextDate.month}-${nextDate.year}`;
        }
    }
 }
