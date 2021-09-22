@@ -56,12 +56,6 @@ function checkPalindromeInDateFormats(date) {
     return flag;
 }
 
-var date = {
-    day: 30,
-    month: 7,
-    year: 2021
-}
-
 function isLeapYear(year) {
     if (year % 400 == 0) {
         return true;
