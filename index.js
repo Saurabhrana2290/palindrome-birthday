@@ -1,6 +1,6 @@
 const dateInput = document.querySelector("#date-input");
 const output = document.querySelector("#output");
-const showBtn = document.querySelector("show-btn");
+const showBtn = document.querySelector("#show-btn");
 
 function reverseString(str) {
     return str.split("").reverse().join("");
@@ -123,11 +123,23 @@ function getNextPalindromeDate(date) {
     return [count, nextDate];
 }
 
-// showBtn.addEventListener("click",function doCheck(){
-//     if(isPalindrome(dateInput.value)){
-//         console.log("Not palindrome");
-//     }else{
-//         var result = getNextPalindromeDate(dateInput.value);
-//         console.log(result);
-//     }
-// });
+showBtn.addEventListener("click",doCheck);
+
+function doCheck(e){
+   var dateString =  dateInput.value;
+   if(dateString != ""){
+       var listOfDates = dateString.split("-");
+       var date = {
+           day : Number(listOfDates[2]),
+           month: Number(listOfDates[1]),
+           year: Number(listOfDates[0])
+       }
+       var isPalindrome = checkPalindromeInDateFormats(date);
+       if(isPalindrome){
+        output.innerText = "Wow! Birthday is Palindrome";
+       }else{
+           var [count, nextDate] = getNextPalindromeDate(date);
+           output.innerText = `Oops! Not a Palindrome. The palindrome date is after ${count} days and the date is ${nextDate.day}-${nextDate.month}-${nextDate.year}`;
+       }
+   }
+}
